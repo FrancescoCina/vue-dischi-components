@@ -2,14 +2,19 @@
   <header>
     <div class="h-100 d-flex justify-content-between align-items-center">
       <img class="ms-4 img-fluid" src="@/assets/img/logo.png" alt="Logo" />
-      <div class="search"></div>
+      <div class="search">
+        <Select></Select>
+      </div>
     </div>
   </header>
 </template>
 
 <script>
+import Select from "@/components/Select.vue";
+
 export default {
   name: "Header",
+  components: { Select },
 };
 </script>
 
