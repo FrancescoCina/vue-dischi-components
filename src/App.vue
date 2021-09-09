@@ -1,17 +1,14 @@
 <template>
   <div id="app">
-    <div class="prova">
-      <div class="row">
-        <div class="col"></div>
-      </div>
-    </div>
+    <Header />
   </div>
 </template>
 
 <script>
+import Header from "@/components/Header.vue";
 export default {
   name: "App",
-  components: {},
+  components: { Header },
 };
 </script>
 
