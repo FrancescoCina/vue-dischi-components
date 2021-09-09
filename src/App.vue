@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Header :albums="albums" />
-    <Albums :albums="albums" />
+    <Header @passHeaderSelectValue="catchHeaderSelectValue" :albums="albums" />
+    <Albums :albums="filteredAlbums" />
   </div>
 </template>
 
@@ -16,7 +16,24 @@ export default {
   data() {
     return {
       albums: [],
+      appSelectValue: "",
     };
+  },
+  methods: {
+    catchHeaderSelectValue(valueFromHeader) {
+      this.appSelectValue = valueFromHeader;
+    },
+  },
+  computed: {
+    filteredAlbums() {
+      const filteredAlbums = [];
+      this.albums.forEach((album) => {
+        if (album.genre.includes(this.appSelectValue)) {
+          filteredAlbums.push(album);
+        }
+      });
+      return filteredAlbums;
+    },
   },
   created() {
     axios

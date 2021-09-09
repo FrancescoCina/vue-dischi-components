@@ -1,8 +1,12 @@
 <template>
   <div>
     <label class="white me-3" for="select-genres">Seleziona un genere</label>
-    <select v-model="genre" id="select-genres">
-      <option selected value="all">All</option>
+    <select
+      @change="$emit('passSelectValue', genre)"
+      v-model="genre"
+      id="select-genres"
+    >
+      <option value="all">All</option>
       <option v-for="(genre, index) in genres" :key="index" :value="genre">
         {{ genre }}
       </option>
@@ -27,3 +31,5 @@ export default {
   color: #fff;
 }
 </style>
+
+

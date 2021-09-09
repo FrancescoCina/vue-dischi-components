@@ -3,7 +3,10 @@
     <div class="h-100 d-flex justify-content-between align-items-center">
       <img class="ms-4 img-fluid" src="@/assets/img/logo.png" alt="Logo" />
       <div class="select me-3">
-        <Select :genres="singleGenre"></Select>
+        <Select
+          @passSelectValue="catchSelectValue"
+          :genres="singleGenre"
+        ></Select>
       </div>
     </div>
   </header>
@@ -19,7 +22,14 @@ export default {
   data() {
     return {
       allGenres: [],
+      headerSelectValue: "",
     };
+  },
+  methods: {
+    catchSelectValue(selectValue) {
+      this.headerSelectValue = selectValue;
+      this.$emit("passHeaderSelectValue", this.headerSelectValue);
+    },
   },
   computed: {
     singleGenre() {
