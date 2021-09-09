@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header :albums="albums" />
     <Albums :albums="albums" />
   </div>
 </template>

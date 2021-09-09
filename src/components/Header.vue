@@ -2,8 +2,8 @@
   <header>
     <div class="h-100 d-flex justify-content-between align-items-center">
       <img class="ms-4 img-fluid" src="@/assets/img/logo.png" alt="Logo" />
-      <div class="search">
-        <Select></Select>
+      <div class="select me-3">
+        <Select :genres="singleGenre"></Select>
       </div>
     </div>
   </header>
@@ -15,6 +15,26 @@ import Select from "@/components/Select.vue";
 export default {
   name: "Header",
   components: { Select },
+  props: ["albums"],
+  data() {
+    return {
+      allGenres: [],
+    };
+  },
+  computed: {
+    singleGenre() {
+      this.albums.forEach((album) => {
+        this.allGenres.push(album.genre);
+      });
+      const singleGenres = [];
+      this.allGenres.forEach((genre) => {
+        if (!singleGenres.includes(genre)) {
+          singleGenres.push(genre);
+        }
+      });
+      return singleGenres;
+    },
+  },
 };
 </script>
 
